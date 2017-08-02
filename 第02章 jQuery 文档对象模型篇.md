@@ -1,0 +1,276 @@
+# 第01回：节点创建
+
+## 1、创建元素节点
+
+  可以有几种方式，后面会慢慢接触。常见的就是直接把这个节点的结构通过HTML标记字符串描述出来，通过$()函数处理，$("html结构")
+
+```javascript
+$('<div></div>')
+```
+
+## 2、创建文本节点
+
+  与创建元素节点类似，可以直接把文本内容一并描述
+
+```javascript
+$('<div>我是文本节点</div>')
+```
+
+## 3、创建属性节点
+
+  与创建元素节点同样的方式
+
+```javascript
+$("<div id='test' class='gg'>我是文本节点</div>")
+```
+
+# 第02回：节点插入
+
+## 1、append() & appendTo()
+
+| 选择器         | 描述                          |
+| ----------- | --------------------------- |
+| append( )   | 向每个匹配的元素内部追加内容              |
+| appendTo( ) | 把所有匹配的元素**追加到**另一个、指定的元素集合中 |
+
+```javascript
+$(A).append(B);  // 把B添加到A中(后面)
+$(A).appendTo(B);// 把A添加到B中(后面)
+```
+
+## 2、after() & before()
+
+| 选择器       | 描述         |
+| --------- | ---------- |
+| after( )  | 指定元素后面添加内容 |
+| before( ) | 指定元素前面添加内容 |
+
+```javascript
+$(A).after(B); // 在A的后面添加B
+$(A).before(B);// 在A的前面添加B
+```
+
+## 3、prepend() & prependTo()
+
+| 选择器          | 描述              |
+| ------------ | --------------- |
+| prepend( )   | 指定元素内部前置一内容     |
+| prependTo( ) | 指定元素前置到另一个元素的内部 |
+
+```javascript
+$(A).prepend(B);   // 把B添加到A中(前面)
+$(A).prependTo(B); // 把A添加到B中(前面)
+```
+
+## 4、insertAfter() & insertBefore()
+
+| 选择器            | 描述            |
+| -------------- | ------------- |
+| insertAfter()  | 将内容插入到指定元素的后面 |
+| insertBefore() | 将内容插入到指定元素的前面 |
+
+```javascript
+$(A).insertAfter(B);  // 将A插入到B的后面
+$(A).insertBefore(B); // 将A插入到B的前面
+```
+
+# 第03回：节点删除
+
+## 1、.empty()
+
+  该方法主要是用于清空指定元素的所有子节点，如：
+
+```html
+<div class="hello"><p>耀哥</p></div>
+```
+
+  如果我们通过empty方法移除里面div的所有元素，它只是清空内部的html代码，但是标记仍然留在DOM中。
+
+```javascript
+//通过empty处理
+$('.hello').empty()
+
+// 结果：<p>耀哥</p> 被移除
+<div class="hello"></div>
+```
+
+## 2、.remove()
+
+  remove与empty一样，都是移除元素的方法，但是remove会将元素自身移除，同时也会移除元素内部的一切，包括绑定的事件及与该元素相关的jQuery数据。
+
+  例如一段节点，绑定点击事件：
+
+```javascript
+$('.btn').on('click', function() {
+	alert('Hello, world!');
+});
+```
+
+  如果不通过remove方法删除这个节点其实也很简单，但是同时需要把事件给销毁掉，这里是为了防止"内存泄漏"，所以前端开发者一定要注意，绑了多少事件，不用的时候一定要记得销毁。
+
+  通过remove方法移除div及其内部所有元素，remove内部会自动操作事件销毁方法，所以使用使用起来非常简单。
+
+```javascript
+// 通过remove处理
+$('.btn').remove()
+// 结果：节点不存在了,同时事件也会被销毁
+```
+
+  remove比empty好用的地方就是可以传递一个选择器表达式用来过滤将被移除的匹配元素集合，可以选择性的删除指定的节点。
+
+## 3、.detach()
+
+  如果我们希望临时删除页面上的节点，但是又不希望节点上的数据与事件丢失，并且能在下一个时间段让这个删除的节点显示到页面，这时候就可以使用detach方法来处理。
+
+  detach从字面上就很容易理解。让一个web元素托管。即从当前页面中移除该元素，但保留这个元素的内存模型对象。
+
+> jQuery 官方文档说明：
+
+> ```javascript
+> 这个方法不会把匹配的元素从jQuery对象中删除，因而可以在将来再使用这些匹配的元素。与remove()不同的是，所有绑定的事件、附加的数据等都会保留下来。
+> $("div").detach()这一句会移除对象，仅仅是显示效果没有了。但是内存中还是存在的。当你append之后，又重新回到了文档流中。就又显示出来了。
+> ```
+
+  当然这里要特别注意，detach方法是JQuery特有的，所以它只能处理通过JQuery的方法绑定的事件或者数据。
+
+```html
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+
+<h1>Hello, world!</h1>
+<button>Click</button>
+<script type="text/javascript">
+	var flag = false;
+	var p    = null;
+	$('button').on('click', function() {
+		flag  = !flag;
+		if(flag) {
+			p = $('h1').detach();
+		}else {
+			$('button').before(p);
+			p = null;
+		}
+	});
+</script>
+</html>
+```
+
+# 第04回：节点复制与替换
+
+## 1、.clone()
+
+  克隆节点是DOM的常见操作，jQuery提供一个clone方法，专门用于处理dom的克隆。
+
+  .clone()方法深度复制所有匹配的元素集合，包括所有匹配元素、匹配元素的下级元素、文字节点。
+
+  clone方法比较简单就是克隆节点，但是需要注意，如果节点有事件或者数据之类的其他处理，我们需要通过clone(ture)传递一个布尔值ture用来指定，这样不仅仅只是克隆单纯的节点结构，还要把附带的事件与数据给一并克隆了。
+
+```javascript
+// HTML部分
+// <div></div>
+
+// JavaScript部分
+$("div").on('click', function() {//执行操作})
+
+//clone处理一
+$("div").clone()    //只克隆了结构，事件丢失
+
+//clone处理二
+$("div").clone(true) //结构、事件与数据都克隆
+```
+
+## 2、.replaceWith() & .replaceAll()
+
+```javascript
+$(A).replaceWith(B); // 把A替换为B
+$(A).replaceAll(B);  // 把B替换为A
+```
+
+## 3、.wrap()
+
+  如果要将元素用其他元素包裹起来，也就是给它增加一个父元素，针对这样的处理，JQuery提供了一个wrap方法。
+
+```html
+<p>Hello, world!</p>
+```
+
+```javascript
+$('p').wrap('<div></div>')
+
+// 结果为：
+// <div>
+// 		<p>Hello, world!</p>  
+// </div>
+```
+
+## 4、.unwrap()
+
+  该方法与wrap方法相反，unwrap方法将匹配元素集合的父级元素删除，保留自身（和兄弟元素，如果存在）在原来的位置。
+
+## 5、.wrapAll()
+
+  wrap是针对单个dom元素处理，如果要将集合中的元素用其他元素包裹起来，也就是给他们增加一个父元素，针对这样的处理，JQuery提供了一个wrapAll方法，比如，页面上有两个p元素，如果要为两个p元素添加共有的一个父类div，则通过如下代码实现：
+
+```javascript
+$('p').wrapAll('<div></div>');
+```
+
+## 6、.wrapInner()
+
+  如果要将合集中的元素内部所有的子元素用其他元素包裹起来，并当作指定元素的子元素，针对这样的处理，JQuery提供了一个wrapInner方法。我们来看例子：
+
+```html
+<div>Hello, world!</div>
+<div>Hello, world!</div>
+```
+
+```javascript
+$('div').wrapInner('<p></p>');
+
+// 结果为：
+/*
+<div>
+	<p>Hello, world!</p>
+</div>
+<div>
+	<p>Hello, world!</p>
+</div>	
+ */
+```
+
+## 第05回：节点遍历
+
+## 1、.children()
+
+  jQuery是一个集合对象，如果想快速查找集合里面的第一级子元素，此时可以用children()方法。这里需要注意：.children(selector) 方法是返回匹配元素集合中每个元素的所有子元素（仅儿子辈，这里可以理解为就是父亲-儿子的关系）
+
+```html
+<div class="div">
+    <ul class="son">
+        <li class="grandson">1</li>
+    </ul>
+</div>
+```
+
+  代码如果是$("div").children()，那么意味着只能找到ul，因为div与ul是父子关系，li与div是祖辈关系，因此无法找到。
+
+> 提示：jQuery是一个集合对象，所以通过children是匹配集合中每一个元素的第一级子元素。
+
+  该方法可以接受参数，用于筛选子元素，如 `$('.parent').children(.active)`，匹配子元素中类名为 `active` 的那一个。
+
+## 2、.find()
+
+
+
+
+
+
+
+
+

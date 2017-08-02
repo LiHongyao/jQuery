@@ -67,7 +67,7 @@
 
   点击前往 [jQuery 下载](http://jquery.com/download/)，选择第一项 *Download the compressed, production jQuery 3.2.1*，保存到项目之后，直接引用这个文件即可。
 
-> tips：最长用的jQuery基础方法是：`.ready()方法`
+> tips：最常用的jQuery基础方法是：`.ready()方法`
 >
 > ```javascript
 > $(document).ready(function(){
@@ -87,13 +87,13 @@
 
 # 六、jQuery/DOM 对象转换
 
-  jQuery 对象是通过 jQuery 包装DOM 对象后产生的对象。jQuery 对象是 jQuery 独有的，其可以使用 jQuery 里的方法，但是不能使用 DOM 的方法；例如： $("#img").attr("src","test.jpg"); 这里的 $("#img") 就是 jQuery 对象。
+  jQuery 对象是通过 jQuery 包装DOM 对象后产生的对象。jQuery 对象是 jQuery 独有的，其可以使用 jQuery 里的方法，但是不能使用 DOM 的方法；例如：` $("#img").attr("src","test.jpg"); ` 这里的 `$("#img")` 就是 jQuery 对象。
 
-  DOM 对象就是Javascript 固有的一些对象操作。DOM 对象能使用Javascript 固有的方法，但是不能使用 jQuery 里的方法。例如：document.getElementById("img").src = “test.jpg"; 这里的document.getElementById("img") ; 就是DOM 对象。
+  DOM 对象就是Javascript 固有的一些对象操作。DOM 对象能使用Javascript 固有的方法，但是不能使用 jQuery 里的方法。例如：`document.getElementById("img").src = “test.jpg";`  这里的 `document.getElementById("img") ;`  就是DOM 对象。
 
-  $("#img").attr("src","test.jpg"); 和 document.getElementById("img").src = "test.jpg"; 是等价的，是正确的，但是 $("#img").src = "test.jpg" ；或者 document.getElementById("img").attr("src","test.jpg"); 都是错误的。
+  `$("#img").attr("src","test.jpg"); ` 和 `document.getElementById("img").src = "test.jpg";`  是等价的，是正确的，但是` $("#img").src = "test.jpg" ;` 或者 `document.getElementById("img").attr("src","test.jpg");`  都是错误的。
 
-  再说一个例子，就是this, 在写 jQuery 时经常这样写： this.attr("src","test.jpg")；可是就是出错，其实this 是DOM对象，而.attr("src","test.jpg") 是 jQuery 方法，所以出错了。要解决这个问题就要将 DOM对象转换成 jQuery 对象，例如 $(this).attr("src","test.jpg");
+  再说一个例子，就是 `this` , 在写 jQuery 时经常这样写：` this.attr("src","test.jpg")；`可是就是出错，其实 `this` 是DOM对象，而 `.attr("src","test.jpg") ` 是 jQuery 方法，所以出错了。要解决这个问题就要将 DOM对象转换成 jQuery 对象，例如 `$(this).attr("src","test.jpg");`
 
 ## 1、DOM 对象转成 jQuery 对象
 

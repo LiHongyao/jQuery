@@ -231,6 +231,10 @@ $.ajax({
 })
 ```
 
+# 五、参考示例
+
+https://github.com/LiHongyao/AJAX
+
 # 六、拓展：跨域
 
 待更新......

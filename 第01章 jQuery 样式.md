@@ -247,11 +247,26 @@ jQuery.removeData( element [, name ] )
 .removeData( [name ] )
 ```
 
+# 第 03 回：拓展
 
+## 1、判断checkbox是否选中及改变其状态
 
+1）、jquery判断checked的三种方法:
 
+- `$el.attr('checked)`:   // 看版本1.6+返回:”checked”或”undefined” ;1.5-返回:true或false
+- `$el.prop('checked')`: // 16+:true/false
+- `$el.is(':checked')`:   // 所有版本:true/false//别忘记冒号哦
 
+2）、jquery赋值checked的几种写法:
 
+- `$el.attr("checked","checked")`
+- `$el.attr("checked",true)`
+
+jquery1.6+:prop的3种赋值:
+
+- `$el.prop("checked",true)`
+- `$el.prop({checked:true})`：map 键值对
+- `$el.prop("checked", function(){ return true/false;})`
 
 
 

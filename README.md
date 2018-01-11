@@ -1,6 +1,5 @@
 > 本课件参考:
 >
-> - [慕课网 jQuery基础](http://www.imooc.com/course/list?c=jquery)
 > - [jQuery API 中文文档（官方）](https://www.jquery123.com/)
 > - [jQuery API 中文文档（非官方）](http://jquery.cuishifeng.cn/)
 > - [jQuery 菜鸟教程](http://www.runoob.com/jquery/jquery-tutorial.html)
@@ -118,13 +117,13 @@ jQuery的原理就是用它自定的一个变量名“jQuery”作为对象名�
 通过npm下载最新版本的方式：
 
 ```shell
-$ npm install -g jquery
+$ npm install [-g] jquery
 ```
 
 下载指定版本（第1.x版的最新版本）：
 
 ```javascript
-$ npm install -g jquery@1
+$ npm install [-g] jquery@1
 ```
 
 下载的jQuery文件夹包含在一个叫做“node_modules”的文件夹下。
@@ -182,8 +181,8 @@ let div  = $div.get(0);
 // 将“$“对象的名称改为”jq“
 var jq = $.noConflict();
 jq("li").click(function(){
-  var txt = jq(this).text();
-  jq("p").text(text);
+  	var txt = jq(this).text();
+  	jq("p").text(text);
 });
 ```
 

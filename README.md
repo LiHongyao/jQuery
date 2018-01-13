@@ -65,34 +65,15 @@ jQuery的原理就是用它自定的一个变量名“jQuery”作为对象名�
 
 ## 1、在线引用
 
-### 1）、国外CDN
+> [CDN 引用地址](http://www.bootcdn.cn/jquery/)
 
-- Google Hosted Libraries
-
-  src="[http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js](http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js)"
-
-
-- Microsoft CDN
-
-  src="[http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.0.min.js](http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.0.min.js)"
-
-- jQuery官网
-
-   src="[http://code.jquery.com/jquery-1.11.0.min.js](http://code.jquery.com/jquery-1.11.0.min.js)"
-
-### 2）、国内CDN
-
-- 百度
-
-  src="[http://libs.baidu.com/jquery/2.0.0/jquery.min.js](http://libs.baidu.com/jquery/2.0.0/jquery.min.js)"
-
-- 新浪
-
-  src="[http://lib.sinaapp.com/js/jquery/1.6/jquery.min.js](http://lib.sinaapp.com/js/jquery/1.6/jquery.min.js)"
+```html
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+```
 
 ## 2、本地引用
 
-点击前往 [jQuery 下载](http://jquery.com/download/)，选择第一项 *Download the compressed, production jQuery 3.2.1*，保存到项目之后，直接引用这个文件即可。
+点击前往 [jQuery 下载](http://jquery.com/download/)，选择第一项 *Download the compressed, development  jQuery 3.2.1*，保存到项目之后，直接引用这个文件即可。
 
 > tips：最常用的jQuery基础方法是：`.ready()方法`
 >
@@ -122,7 +103,7 @@ $ npm install [-g] jquery
 
 下载指定版本（第1.x版的最新版本）：
 
-```javascript
+```shell
 $ npm install [-g] jquery@1
 ```
 
@@ -130,13 +111,25 @@ $ npm install [-g] jquery@1
 
 # # jQuery/DOM 对象转换
 
-jQuery 对象是通过 jQuery 包装DOM 对象后产生的对象。jQuery 对象是 jQuery 独有的，其可以使用 jQuery 里的方法，但是不能使用 DOM 的方法；例如：` $("#img").attr("src","test.jpg"); ` 这里的 `$("#img")` 就是 jQuery 对象。
+jQuery 对象是通过 jQuery 包装DOM 对象后产生的对象。jQuery 对象是 jQuery 独有的，其可以使用 jQuery 里的方法，但是不能使用 DOM 的方法；例如：
 
-DOM 对象就是Javascript 固有的一些对象操作。DOM 对象能使用Javascript 固有的方法，但是不能使用 jQuery 里的方法。例如：`document.getElementById("img").src = “test.jpg";`  这里的 `document.getElementById("img") ;`  就是DOM 对象。
+````javascript
+$("#img").attr("src","test.jpg")
+````
 
-`$("#img").attr("src","test.jpg"); ` 和 `document.getElementById("img").src = "test.jpg";`  是等价的，是正确的，但是` $("#img").src = "test.jpg" ;` 或者 `document.getElementById("img").attr("src","test.jpg");`  都是错误的。
+这里的 `$("#img")` 就是 jQuery 对象。
 
-再说一个例子，就是 `this` , 在写 jQuery 时经常这样写：` this.attr("src","test.jpg")；`可是就是出错，其实 `this` 是DOM对象，而 `.attr("src","test.jpg") ` 是 jQuery 方法，所以出错了。要解决这个问题就要将 DOM对象转换成 jQuery 对象，例如 `$(this).attr("src","test.jpg");`
+DOM 对象就是Javascript 固有的一些对象操作。DOM 对象能使用Javascript 固有的方法，但是不能使用 jQuery 里的方法。例如：
+
+```javascript
+document.getElementById("img").src = “test.jpg";
+```
+
+这里的 *document.getElementById("img") ;*   就是DOM 对象。
+
+*$("#img").attr("src","test.jpg");* 和 *document.getElementById("img").src = "test.jpg";*  是等价的，是正确的，但是 *$("#img").src = "test.jpg" ;*  或者 *document.getElementById("img").attr("src","test.jpg");* 都是错误的。
+
+再说一个例子，就是 `this` , 在写 jQuery 时经常这样写：*this.attr("src","test.jpg");* 可是就是出错，其实 `this` 是DOM对象，而 *.attr("src","test.jpg")* 是 jQuery 方法，所以出错了。要解决这个问题就要将 DOM对象转换成 jQuery 对象，例如 *$(this).attr("src","test.jpg");*
 
 ## 1、DOM 对象转成 jQuery 对象
 
@@ -188,3 +181,4 @@ jq("li").click(function(){
 
 这样一来我们就可以使用“jq”作为我们全局的jQuery对象名了。但若我们开发的项目只使用了jQuery这个库，或者使用的其它第三方程序与jQuery没有名称上的冲突，那是完全没有必要这要做的。毕竟技术的一些关键名称会形成开发者的一些习惯，也是团队间无声的交流语言。如果只是图一个个性，把这个名字改了，只会给团队开发造成一些不必要的困扰。
 
+=

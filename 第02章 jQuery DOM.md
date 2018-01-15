@@ -139,7 +139,7 @@ detach从字面上就很容易理解。让一个web元素托管。即从当前�
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
 </head>
 <body>
 
@@ -169,7 +169,7 @@ detach从字面上就很容易理解。让一个web元素托管。即从当前�
 
 .clone()方法深度复制所有匹配的元素集合，包括所有匹配元素、匹配元素的下级元素、文字节点。
 
-clone方法比较简单就是克隆节点，但是需要注意，如果节点有事件或者数据之类的其他处理，我们需要通过clone(ture)传递一个布尔值ture用来指定，这样不仅仅只是克隆单纯的节点结构，还要把附带的事件与数据给一并克隆了。
+clone方法比较简单就是克隆节点，但是需要注意，如果节点有事件或者数据之类的其他处理，我们需要通过*clone(ture)* 传递一个布尔值 `ture`用来指定，这样不仅仅只是克隆单纯的节点结构，还要把附带的事件与数据给一并克隆了。
 
 ```javascript
 // HTML部分
@@ -194,7 +194,7 @@ $(A).replaceAll(B);  // 把B替换为A
 
 ## 3、.wrap()
 
-如果要将元素用其他元素包裹起来，也就是给它增加一个父元素，针对这样的处理，JQuery提供了一个wrap方法。
+如果要将元素用其他元素包裹起来，也就是给它增加一个父元素，针对这样的处理，JQuery提供了一个 *wrap* 方法。
 
 ```html
 <p>Hello, world!</p>
@@ -204,9 +204,11 @@ $(A).replaceAll(B);  // 把B替换为A
 $('p').wrap('<div></div>')
 
 // 结果为：
-// <div>
-// 		<p>Hello, world!</p>  
-// </div>
+/*
+<div>
+  <p>Hello, world!</p>  
+</div>
+*/
 ```
 
 ## 4、.unwrap()
@@ -300,7 +302,7 @@ find 与 children 类似，区别在于 children是父子关系查找，find是�
 
 ## 4、.parents()
 
-jQuery是一个合集对象，如果想快速查找合集里面的每一个元素的所有祖辈元素，此时可以用 *parents()* 方法。其实也类似find与children的区别，parent只会查找一级，parents则会往上一直查到查找到祖先节点。
+jQuery是一个合集对象，如果想快速查找合集里面的每一个元素的所有祖辈元素，此时可以用 *parents()* 方法。其实也类似 *find* 与 *children* 的区别，parent只会查找一级，parents则会往上一直查到查找到祖先节点。
 
 ```html
 <div class="div">
@@ -322,7 +324,7 @@ jQuery是一个合集对象，如果想快速查找合集里面的每一个元�
 
 粗看 *.parents()* 和 *.closest()* 是有点相似的，都是往上遍历祖辈元素，但是两者还是有区别的，否则就没有存在的意义了
 
-- 起始位置不同：.closest开始于当前元素 .parents开始于父元素
+- 起始位置不同：.closest 开始于当前元素 .parents开始于父元素
 - 遍历的目标不同：.closest要找到指定的目标，.parents遍历到文档根元素，closest向上查找，直到找到一个匹配的就停止查找，parents 一直查找到根元素，并将匹配的元素加入集合
 - 结果不同：.closest返回的是包含零个或一个元素的jquery对象，parents返回的是包含零个或一个或多个元素的jquery对象
 
@@ -342,7 +344,7 @@ jQuery是一个合集对象，如果想快速查找合集里面的每一个元�
 
 ## 9、.each()
 
-jQuery是一个集合对象，通过$()方法找到指定的元素集合后可以进行一系列的操作。比如我们操作$("li").css('') 给所有的li设置style值，因为jQuery是一个集合对象，所以css方法内部就必须封装一个遍历的方法，被称为隐式迭代的过程。要一个一个给集合中每一个li设置颜色，这里方法就是each。
+jQuery是一个集合对象，通过 `$()` 方法找到指定的元素集合后可以进行一系列的操作。比如我们操作$("li").css('') 给所有的li设置style值，因为jQuery是一个集合对象，所以css方法内部就必须封装一个遍历的方法，被称为隐式迭代的过程。要一个一个给集合中每一个li设置颜色，这里方法就是each。
 
 .each() 方法就是一个for循环的迭代器，它会迭代jQuery对象集合中的每一个DOM元素。每次回调函数执行时，会传递当前循环次数作为参数从0开始计数。所以大体上了解3个重点：
 

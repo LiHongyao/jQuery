@@ -96,7 +96,7 @@ $("div").one("click", function(){
 **基本用法**：
 
 ```javascript
-.on( events ,[ selector ] ,[ data ] )
+.on( events ,[ selector ] ,[ data ], fn )
 ```
 
 最常见的给元素绑定一个点击事件，对比一下快捷方式与on方式的不同：
@@ -160,8 +160,8 @@ JavaScript中，由于事件的冒泡机制，我们可以为事件设置代理�
 给出如下代码：
 
 ```javascript
-$('div').on('click', 'p', function(event) {
-	event.target.textContent = 'Hello, world!';
+$('div').on('click', 'p', function(e) {
+	e.target.textContent = 'Hello, world!';
 });
 ```
 
@@ -174,7 +174,7 @@ $('div').on('click', 'p', function(event) {
 绑定两个事件
 
 ```javascript
-$("elem").on("mousedown mouseup",fn)
+$("elem").on("mousedown mouseup", fn)
 ```
 
 删除一个事件
@@ -189,7 +189,7 @@ $("elem").off("mousedown")
 $("elem").off("mousedown mouseup")
 ```
 
-快捷方式删除所有事件，这里不需要传递事件名了，节点上绑定的所有事件讲全部销毁
+快捷方式删除所有事件，这里不需要传递事件名了，节点上绑定的所有事件将全部销毁
 
 ```javascript
 $("elem").off()
@@ -201,7 +201,7 @@ $("elem").off()
 
 事件中的Event对象容易被初学者忽略掉，可能大多时候初学者不知道怎么去用它，但有些时候它还是非常有用的。
 
-一个标准的‘click’事件：
+一个标准的 *click* 事件：
 
 ```javascript
 $(elem).on("click",function(event){
@@ -280,7 +280,7 @@ target 属性可以是注册事件时的元素，或者它的子元素。通常�
 
 **1. this 和 event.target 的区别：**
 
-> js 中事件是会冒泡的，所以 this 是可以变化的，但 event.target 不会变化，它永远是直接接受事件的目标DOM元素；
+> js 中事件是会冒泡的，所以  event.target  是可以变化的，但 this 不会变化，它永远是直接接受事件的目标DOM元素；
 
 **2. this 和 event.target 都是 dom 对象**
 
@@ -290,7 +290,7 @@ target 属性可以是注册事件时的元素，或者它的子元素。通常�
 
 ## 1、trigger事件
 
-众所周知类似于mousedown、click、keydown等等这类型的事件都是浏览器提供的，通俗叫原生事件，这类型的事件是需要有交互行为才能被触发。
+众所周知类似于mousedown、click、keydown 等等这类型的事件都是浏览器提供的，通俗叫原生事件，这类型的事件是需要有交互行为才能被触发。
 
 在jQuery通过on方法绑定一个原生事件
 

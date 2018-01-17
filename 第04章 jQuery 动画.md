@@ -26,13 +26,13 @@
 
 > 注意：
 >
-> 1. show与hide方法是修改的display属性，通过是visibility属性布局需要通过css方法单独设置。
-> 2. 如果使用 “!important” 在你的样式中，比如 *display: none !important*，如果你希望 *.show()* 方法正常工作，必须使用 *.css('display', 'block !important')* 重写样式。
+> 1. *.show()(* 与 *.hide()* 方法是修改的display属性。
+> 2. 如果使用 *“!important”* 在你的样式中，比如 *display: none !important*，如果你希望 *.show()* 方法正常工作，必须使用 *.css('display', 'block !important')* 重写样式。
 > 3. 如果让show与hide成为一个动画，那么默认执行动画会改变元素的高度，高度，透明度。
 
 ## 3、.toggle()
 
-show与hide是一对互斥的方法。需要对元素进行显示隐藏的互斥切换，通常情况是需要先判断元素的display状态，然后调用其对应的处理方法。比如显示的元素，那么就要调用hide，反之亦然。 对于这样的操作行为，jQuery提供了一个便捷方法toggle用于切换显示或隐藏匹配元素。
+show与hide是一对互斥的方法。需要对元素进行显示隐藏的互斥切换，通常情况是需要先判断元素的display状态，然后调用其对应的处理方法。比如显示的元素，那么就要调用hide，反之亦然。 对于这样的操作行为，jQuery提供了一个便捷方法 *.toggle()* 用于切换显示或隐藏匹配元素。
 
 语法形式如下：
 
@@ -44,11 +44,11 @@ show与hide是一对互斥的方法。需要对元素进行显示隐藏的互斥
 
 ## 1、.slideDown()
 
-对于隐藏的元素，在将其显示出来的过程中，可以对其进行一些变化的动画效果。之前学过了show方法，show方法在显示的过程中也可以有动画，但是.show()方法将会匹配元素的宽度，高度，以及不透明度，同时进行动画操作。这里将要学习一个新的显示方法slideDown方法。
+对于隐藏的元素，在将其显示出来的过程中，可以对其进行一些变化的动画效果。之前学过了show方法，show方法在显示的过程中也可以有动画，但是 *.show()* 方法将会匹配元素的宽度，高度，以及不透明度，同时进行动画操作。这里将要学习一个新的显示方法 *.slideDown()* 方法。
 
 **.slideDown()：用滑动动画显示一个匹配元素**
 
-.slideDown()方法将给匹配元素的高度的动画，这会导致页面的下面部分滑下去，弥补了显示的方式。其语法形式为：
+.slideDown() 方法将给匹配元素的高度的动画，这会导致页面的下面部分滑下去，弥补了显示的方式。其语法形式为：
 
 ```javascript
 .slideDown([speed,[easing],[fn]])
@@ -66,7 +66,7 @@ show与hide是一对互斥的方法。需要对元素进行显示隐藏的互斥
 其语法形式为：
 
 ```javascript
-.slideUp( [duration ] [, easing ] [, complete ] )
+.slideUp( [speed ] [, easing ] [, complete ] )
 ```
 
 这个使用的含义就是：找到元素的高度，然后采用一个下滑动画让元素一直滑到隐藏，当高度为0的时候，也就是不可见的时，修改元素display 样式属性被设置为none。这样就能确保这个元素不会影响页面布局了。
@@ -76,7 +76,7 @@ show与hide是一对互斥的方法。需要对元素进行显示隐藏的互斥
 slideDown与slideUp是一对相反的方法。需要对元素进行上下拉卷效果的切换，jQuery提供了一个便捷方法slideToggle用滑动动画显示或隐藏一个匹配元素。其语法形式为：
 
 ```
-.slideToggle( [duration ] [, easing ] [, complete ] )
+.slideToggle( [speed ] [, easing ] [, complete ] )
 ```
 
 > 注意：
@@ -86,30 +86,30 @@ slideDown与slideUp是一对相反的方法。需要对元素进行上下拉卷�
 
 # 第03回：淡入、淡出
 
-除了通过display设置元素的显示与隐藏，还有一种方法就是设置元素的不透明度，值范围为0~1，当不透明度为1时，元素显示，当不透明度为0时，元素隐藏。jQuery淡入淡出效果正是使用了这个原理。只不过，当不透明度为0时，元素虽然隐藏了，但是并没有脱离文档流，但是jQuery中，元素淡出会脱离文档流。
+除了通过 *display* 设置元素的显示与隐藏，还有一种方法就是设置元素的不透明度（`opacity`），值范围为` 0~1` ，当不透明度为1时，元素显示，当不透明度为0时，元素隐藏。jQuery淡入淡出效果正是使用了这个原理。只不过，当不透明度为0时，元素虽然隐藏了，但是并没有脱离文档流，但是jQuery中，元素淡出会脱离文档流。
 
 ## 1、.fadeIn()
 
 ```javascript
-.fadeIn( [duration ] [, easing ] [, complete ] )
+.fadeIn( [speed ] [, easing ] [, complete ] )
 ```
 
 ## 2、.fadeOut()
 
 ```javascript
-.fadeOut( [duration ] [, easing ] [, complete ] )
+.fadeOut( [speed ] [, easing ] [, complete ] )
 ```
 
 ## 3、.fadeToggle()
 
 ```javascript
-.fadeToggle( [duration ] [, easing ] [, complete ] )
+.fadeToggle( [speed ] [, easing ] [, complete ] )
 ```
 
 ## 4、.fadeTo()
 
 ```javascript
-.fadefadeToToggle( [duration ] , opacity , [, easing ] [, complete ] )
+.fadefadeToToggle( speed , opacity , [, easing ] [, complete ] )
 ```
 
 # 第04回：自定义动画
@@ -119,14 +119,14 @@ slideDown与slideUp是一对相反的方法。需要对元素进行上下拉卷�
 jQuery 提供的动画有限，有时需要我们实现一些更为复杂的动画效果，这时我们就需要使用自定义动画了。当然，jQuery也为我们提供了自定义动画的接口，其语法形式如下：
 
 ```javascript
-.animate( properties ,[ duration ], [ easing ], [ complete ] )
-.animate( properties, options )
+.animate( prop ,[ speed ], [ easing ], [ complete ] )
+.animate( prop, options )
 ```
 
 **参数解读**
 
-- properties：一个或多个css属性的键值对所构成的Object对象，对数字属性值有效，驼峰命名，可使用快捷方式如‘show/toggle’。
-- duration：持续时间，单位ms，提供'fast' 和 'slow'字符串，分别表示持续时间为200 和 600毫秒。
+- properties：一个或多个css属性的键值对所构成的Object对象，对 **数字属性值** 有效，驼峰命名，可使用快捷方式如‘show/toggle’。
+- speed：持续时间，单位ms，提供 'fast' 和 'slow' 字符串，分别表示持续时间为200 和 600毫秒。
 - easing：动画运动算法，jQuery库中默认调用 swing。如果需要其他的动画算法，请查找相关的插件
 - complete：回调函数
 
@@ -143,7 +143,7 @@ $(".box").click(function () {
 animate 在执行动画中，如果需要观察动画的一些执行情况，或者在动画进行中的某一时刻进行一些其他处理，我们可以通过animate提供的第二种设置语法，传递一个对象参数，可以拿到动画执行状态一些通知。
 
 ```javascript
-.animate( properties, options )
+.animate( prop, options )
 ```
 
 **options参数：**
@@ -299,10 +299,10 @@ function getQueueCount() {
 .stop( [clearQueue ], [ jumpToEnd ] )
 ```
 
-stop还有几个可选的参数，简单来说可以这3种情况：
+该方法的可选参数，简单来说可以有3种情况：
 
-- **.stop()**： 停止当前动画，点击在暂停处继续开始
-- **.stop(true)**：如果同一元素调用多个动画方法，尚未被执行的动画被放置在元素的效果队列中。这些动画不会开始，直到第一个完成。当调用 *.stop()* 的时候，队列中的下一个动画立即开始。如果clearQueue参数提供true值,那么在队列中的动画其余被删除并永远不会运行
+- **.stop()**： 停止当前动画，迅速执行后续动画效果。
+- **.stop(true)**：停止当前动画，清除后续动画队列。
 - **.stop(true,true)**：当前动画将停止，但该元素上的 CSS 属性会被立刻修改成动画的目标值
 
 简单的说：参考下面代码、
@@ -372,6 +372,12 @@ $('#foo').slideUp(300).delay(800).fadeIn(400);
 ## 9、jQuery.fx.interval
 
 设置jQuery动画每隔多少毫秒绘制一帧图像 (默认为13 毫秒) 数字越小越流畅，但可能影响浏览器性能。
+
+
+
+
+
+
 
 
 

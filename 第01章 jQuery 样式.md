@@ -116,7 +116,7 @@ jQuery允许使用css选择器查找元素，其语法形式为：`$('Selector')
 
 > 提示：.text()结果返回一个字符串，包含所有匹配元素的合并文本
 
-**c、.html & .text similarities and differences**
+**> .html & .text similarities and differences**
 
 - .html与.text的方法操作是一样，只是在具体针对处理对象不同
 - .html处理的是元素内容，.text处理的是文本内容
@@ -158,7 +158,7 @@ jQuery允许使用css选择器查找元素，其语法形式为：`$('Selector')
 
 - .prop(key[, value])：获取/设置状态属性
 - .removeProp(key)：移除状态属性
-- indeterminate：获取/设置 “checkbox” 半选中状态
+- $checkbox.prop("indeterminate", true)：获取/设置 “checkbox” 半选中状态
 
 ## 3、.data()
 

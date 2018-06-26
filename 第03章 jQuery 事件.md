@@ -9,7 +9,7 @@ $ele.event( [eventData ], handler(eventObject) )
 ```javascript
 $(".button").click("Hello, jQuery!", function(e) {
   	// ...
-  	// this --> .button
+  	// this   --> .button
   	// e.data --> "Hello, jQuery!"
 })
 ```

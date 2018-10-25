@@ -73,7 +73,7 @@ jQuery的原理就是用它自定的一个变量名“jQuery”作为对象名�
 
 ## 2、本地引用
 
-点击前往 [jQuery 下载](http://jquery.com/download/)，选择第一项 *Download the compressed, development  jQuery 3.2.1*，保存到项目之后，直接引用这个文件即可。
+点击前往 [jQuery 下载](http://jquery.com/download/)，选择第一项 *Download the compressed, development  jQuery 3.3.1*，保存到项目之后，直接引用这个文件即可。
 
 > tips：最常用的jQuery基础方法是：`.ready()方法`
 >

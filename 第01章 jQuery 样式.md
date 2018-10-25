@@ -33,7 +33,7 @@ jQuery允许使用css选择器查找元素，其语法形式为：`$('Selector')
 - `:lt(index)`：选中元素中索引编号小于参数中指定数字的元素；*（ jQuery ）*
 - `header`：所有的 \<h1>到\<h6>元素；*（ jQuery ）*
 - `:animated`：正在进行动画的元素；*（ jQuery ）*
-- `：focus`：当前拥有焦点的元素；
+- `:focus`：当前拥有焦点的元素；
 
 ## 4、内容筛选器
 

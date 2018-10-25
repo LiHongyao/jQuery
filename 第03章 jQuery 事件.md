@@ -131,8 +131,8 @@ $("#elem").on({
 function hello( event ) {
 	console.log('Hello, ' + event.data.name);
 }
-$('#btn').on('click', {name: 'Henrry'}, hello);
-// 点击输出：Hello, Henrry
+$('#btn').on('click', {name: 'Henry'}, hello);
+// 点击输出：Hello, Henry
 ```
 
 可以通过第二参数（对象），当一个事件被触发时，要传递给事件处理函数的

@@ -81,17 +81,21 @@ $(A).insertBefore(B); // 将A插入到B的前面
 该方法主要是用于清空指定元素的所有子节点，如：
 
 ```html
-<div class="hello"><p>耀哥</p></div>
+<div class="hello">
+  <p>耀哥</p>
+</div>
 ```
 
 如果我们通过empty方法移除里面div的所有元素，它只是清空内部的html代码，但是标记仍然留在DOM中。
 
 ```javascript
 //通过empty处理
-$('.hello').empty()
+$('.hello').empty();
 
 // 结果：<p>耀哥</p> 被移除
-<div class="hello"></div>
+<div class="hello">
+  
+</div>
 ```
 
 ## 2、.remove()
@@ -132,32 +136,11 @@ detach从字面上就很容易理解。让一个web元素托管。即从当前�
 
 当然这里要特别注意，detach方法是JQuery特有的，所以它只能处理通过JQuery的方法绑定的事件或者数据。
 
-```html
-<!DOCTYPE html>
-<html lang="zh-cn">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
-</head>
-<body>
-
-<h1>Hello, world!</h1>
-<button>Click</button>
-<script type="text/javascript">
-	var flag = false;
-	var p    = null;
-	$('button').on('click', function() {
-		flag  = !flag;
-		if(flag) {
-			p = $('h1').detach();
-		}else {
-			$('button').before(p);
-			p = null;
-		}
-	});
-</script>
-</html>
+```js
+var li = $(".list li:eq(2)").detach();
+setTimeout(() => {
+    $(".list").append(li);
+}, 3000);
 ```
 
 # 第04回：节点复制与替换
@@ -166,15 +149,11 @@ detach从字面上就很容易理解。让一个web元素托管。即从当前�
 
 克隆节点是DOM的常见操作，jQuery提供一个clone方法，专门用于处理dom的克隆。
 
-.clone()方法深度复制所有匹配的元素集合，包括所有匹配元素、匹配元素的下级元素、文字节点。
+clone()方法深度复制所有匹配的元素集合，包括所有匹配元素、匹配元素的下级元素、文字节点。
 
 clone方法比较简单就是克隆节点，但是需要注意，如果节点有事件或者数据之类的其他处理，我们需要通过*clone(ture)* 传递一个布尔值 `ture`用来指定，这样不仅仅只是克隆单纯的节点结构，还要把附带的事件与数据给一并克隆了。
 
 ```javascript
-// HTML部分
-// <div></div>
-
-// JavaScript部分
 $("div").on('click', function() {//执行操作})
 
 //clone处理一

@@ -98,13 +98,13 @@ jQuery的原理就是用它自定的一个变量名“jQuery”作为对象名�
 通过npm下载最新版本的方式：
 
 ```shell
-$ npm install [-g] jquery
+$ npm i -s jquery
 ```
 
 下载指定版本（第1.x版的最新版本）：
 
 ```shell
-$ npm install [-g] jquery@1
+$ npm i -s jquery@1.9
 ```
 
 下载的jQuery文件夹包含在一个叫做“node_modules”的文件夹下。

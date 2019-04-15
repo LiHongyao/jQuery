@@ -35,6 +35,8 @@ $(".button").click("Hello, jQuery!", function(e) {
 
 ## 2、表单事件
 
+- .input()：监听表单输入
+
 - .focusin()  & .focusout() ：失去焦点事件 & 获取焦点事件
 
 - .blur()  & .focus() ：失去焦点 & 获取焦点（不会冒泡）

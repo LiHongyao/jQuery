@@ -81,7 +81,6 @@ jQuery允许使用css选择器查找元素，其语法形式为：`$('Selector')
 - `:button`：匹配所有按钮；*（ jQuery ）*
 - `:file`：匹配所有文件域；*（ jQuery ）*
 - `:selected`：匹配下拉列表中所有被选中的列表项；
-- `:enabled`：匹配所有可用元素；
 
 
 - `:enabled`：匹配所有可用的表单元素；

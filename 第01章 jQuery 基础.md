@@ -1,6 +1,6 @@
 # 第 01 回：选择器
 
-jQuery允许使用css选择器查找元素，其语法形式为：`$('Selector')`，它还提供了一些额外的选择器，见下方的 \`*jQuery*` 注释。
+jQuery 允许使用 CSS选择器查找元素，其语法形式为：`$('Selector')`，它还提供了一些额外的选择器，见下方的 \`*jQuery*` 注释。
 
 ## 1、查找元素
 
@@ -101,17 +101,17 @@ jQuery允许使用css选择器查找元素，其语法形式为：`$('Selector')
 
 获取/设置集合中第一个匹配元素的HTML内容，常用的有如下两种使用方法：
 
-- .html()：获取集合中第一个匹配元素的HTML内容
-- .html( htmlString )：设置每一个匹配元素的HTML内容
+- `.html()`：获取集合中第一个匹配元素的HTML内容
+- `.html( htmlString )`：设置每一个匹配元素的HTML内容
 
-> 提示：.html() 方法如DOM中的innerHTML()方法，所以在设置与获取上需要注意的一个最重要的问题，这个操作是针对整个HTML内容（不仅仅只是文本内容）
+> 提示：`.html()` 方法如DOM中的 `innerHTML()` 方法，所以在设置与获取上需要注意的一个最重要的问题，这个操作是针对整个HTML内容（不仅仅只是文本内容）
 
  ## 2、.text()
 
 获取匹配元素集合中每个元素的文本内容结合，包括他们的后代，或设置匹配元素集合中每个元素的文本内容为指定的文本内容。具体有2种用法：
 
-- .text()：获取匹配元素集合中每个元素的合并文本，包括他们的后代
-- .text( textString )：设置匹配元素的文本
+- `.text()`：获取匹配元素集合中每个元素的合并文本，包括他们的后代
+- `.text( textString )`：设置匹配元素的文本
 
 > 提示：.text()结果返回一个字符串，包含所有匹配元素的合并文本
 
@@ -127,31 +127,31 @@ jQuery允许使用css选择器查找元素，其语法形式为：`$('Selector')
 
 该方法主要用于处理表单元素的值，比如input、select和textarea。其使用方法有一下3种形式：
 
-- .val()：获取匹配的元素集合中第一个元素的当前值
-- .val( value )：设置匹配的元素集合中每个元素的值
-- .val( function )：一个用来返回设置值的函数
+- `.val()`：获取匹配的元素集合中第一个元素的当前值
+- `.val( value )`：设置匹配的元素集合中每个元素的值
+- `.val( function )`：一个用来返回设置值的函数
 
 > 提示：
 >
-> 1. 通过.val() 处理select元素，当没有选择项被选中时，它返回null
+> 1. 通过 `.val()` 处理select元素，当没有选择项被选中时，它返回 `null`
 > 2. .val() 方法多用来设置表单字段的值
-> 3. 如果select元素由multiple（多选）属性，并且至少一个选择项被选中，.val() 方法返回一个数组，这个数组包含每个选中选择项的值。
+> 3. 如果select元素由multiple（多选）属性，并且至少一个选择项被选中，`.val()` 方法返回一个数组，这个数组包含每个选中选择项的值。
 
 # 第 03 回：属性
 
 ## 1、元素属性
 
-- .attr(key[, value])：获取/设置属性
-- .attr(attributes)：给指定元素设置多个属性值，语法形式为：{属性名1:属性值1, 属性名2:属性值2, …...}
-- .removeAttr(key)：移除属性
+- `.attr(key[, value])`：获取/设置属性
+- `.attr(attributes)`：给指定元素设置多个属性值，语法形式为：{属性名1:属性值1, 属性名2:属性值2, …...}
+- `.removeAttr(key)`：移除属性
 
 ## 2、状态属性
 
-通过 *prop()* 方法切换状态（true和false之间切换）
+通过 `prop()` 方法切换状态（true和false之间切换）
 
-- .prop(key[, value])：获取/设置状态属性
-- .removeProp(key)：移除状态属性
-- $checkbox.prop("indeterminate", true)：获取/设置 “checkbox” 半选中状态
+- `.prop(key[, value])`：获取/设置状态属性
+- `.removeProp(key)`：移除状态属性
+- `$checkbox.prop("indeterminate", true)`：获取/设置 “checkbox” 半选中状态
 
 ## 3、.data()
 
@@ -189,25 +189,25 @@ jQuery.removeData( element [, name ] )
 
 ## 1、.class Styles
 
-- .hasClass()
+- `.hasClass()`
 
   该方法用于判断元素是否包含某class。
 
-- .addClass()
+- `.addClass()`
 
   该方法可以为元素添加类名，通过动态改变类名，可以让其修改元素呈现不同的效果.
 
-  > 提示：如果添加多个类名，请使用空格隔开。.addClass()方法不会替换一个样式类名。它只是简单的添加一个样式类名到元素上
+  > 提示：如果添加多个类名，请使用空格隔开。`.addClass()` 方法不会替换一个样式类名。它只是简单的添加一个样式类名到元素上
 
-- .removeClass()
+- `.removeClass()`
 
   该方法的作用是从匹配的元素中删除全部或者指定的class，使用方法如下：
 
-  .removeClass()：删除所有class
+  `.removeClass()`：删除所有class
 
-  .removeClass([ className ])：每个匹配元素移除的一个或多个用空格隔开的样式名
+  `.removeClass([ className ])`：每个匹配元素移除的一个或多个用空格隔开的样式名
 
-- .toggleClass()
+- `.toggleClass()`
 
   该方法主要用于类名的互斥切换，比如有时我们需要在删除对应类名和添加赌赢类名之间切换的时候，我们可直接使用该方法，更加方便。一次执行，相当于addClass，再次执行相当于removeClass。
 
@@ -217,13 +217,13 @@ jQuery.removeData( element [, name ] )
 
 **a、获取**
 
-- .css( propertyName )：获取匹配元素集合中的第一个元素的样式属性的计算值
-- .css( propertyNamess )：传递一组数组，返回一个对象结果
+- `.css( propertyName )`：获取匹配元素集合中的第一个元素的样式属性的计算值
+- `.css( propertyNamess )`：传递一组数组，返回一个对象结果
 
 **b、设置**
 
-- .css(propertyName, value )：设置CSS
-- .css( properties )：可以传一个对象（严格语法json），同时设置多个样式
+- `.css(propertyName, value )`：设置CSS
+- `.css( properties )`：可以传一个对象（严格语法json），同时设置多个样式
 
 # 第 05 回：尺寸与位置
 
@@ -237,17 +237,3 @@ jQuery.removeData( element [, name ] )
 - `.scrollLeft()`：设置/获取匹配元素相对滚动条左侧的偏移。
 - `offset()`：获取元素偏移，相对于文档而言，有四个选项（`.top, .left, .right, .bottom`）
 - `position`：获取元素位置，相对于拥有定位属性的祖先级元素而言，有四个选项（`.top, .left, .right, .bottom`）
-
-
-
-
-
-
-
-
-
-
-
-
-
-
